@@ -45,26 +45,30 @@
       padding: 24px 4vw 0;
     }
 
-    /* TOP ROW */
-
     .top-row {
+      position: relative;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       min-height: 64px;
     }
 
     .brand {
+      position: absolute;
+      left: 50%;
+      top: 50%;
       display: inline-flex;
       align-items: center;
       text-decoration: none;
+      transform: translate(-50%, -50%);
     }
 
     .brand img {
       display: block;
-      width: clamp(105px, 13vw, 155px);
+      width: clamp(110px, 17vw, 190px);
       height: auto;
       filter: brightness(0) invert(1);
+      object-fit: contain;
     }
 
     .header-actions {
@@ -111,8 +115,6 @@
       line-height: 17px;
       text-align: center;
     }
-
-    /* SECOND ROW */
 
     .navigation-row {
       display: flex;
@@ -221,8 +223,6 @@
       color: rgba(255, 255, 255, 0.65);
     }
 
-    /* BACKGROUND WATERMARK */
-
     .watermark {
       position: fixed;
       z-index: 0;
@@ -241,15 +241,11 @@
       user-select: none;
     }
 
-    /* SHOP CONTENT */
-
     .shop-content {
       position: relative;
       z-index: 1;
       min-height: 65vh;
     }
-
-    /* CART DRAWER */
 
     .drawer-overlay {
       position: fixed;
