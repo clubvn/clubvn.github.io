@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07162e">
+  <meta name="description" content="VN SHOP — Official VN creative label store.">
+  <title>VN SHOP</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      background: #07162e;
+      color: #f5f6fa;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      position: relative;
+      z-index: 2;
+      padding: 30px 24px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: clamp(48px, 8vw, 88px);
+      font-weight: 900;
+      letter-spacing: -0.1em;
+      line-height: 1;
+    }
+
+    main {
+      position: relative;
+      display: grid;
+      min-height: calc(100vh - 145px);
+      place-items: center;
+      isolation: isolate;
+    }
+
+    .watermark {
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -53%);
+      font-size: min(82vw, 1000px);
+      font-weight: 900;
+      letter-spacing: -0.12em;
+      line-height: 0.8;
+      white-space: nowrap;
+      color: rgba(112, 143, 190, 0.045);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 6vw, 68px);
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-indent: 0.16em;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding-top: 34px;
+      }
+
+      main {
+        min-height: calc(100vh - 125px);
+      }
+
+      .watermark {
+        font-size: 100vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo" aria-label="VN">VN</div>
+  </header>
+
+  <main>
+    <div class="watermark" aria-hidden="true">VN</div>
+    <h1>VN SHOP</h1>
+  </main>
+</body>
+</html>
