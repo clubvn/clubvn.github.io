@@ -85,11 +85,6 @@
       cursor: pointer;
     }
 
-    h1 a:focus-visible {
-      outline: 2px solid #fff;
-      outline-offset: 8px;
-    }
-
     @media (max-width: 600px) {
       header {
         padding-top: 28px;
@@ -102,6 +97,21 @@
       .watermark img {
         width: 190vw;
       }
+    }
+
+    .spotify-player {
+      position: fixed;
+      z-index: 5;
+      bottom: 18px;
+      left: 50%;
+      width: min(340px, calc(100% - 32px));
+      transform: translateX(-50%);
+    }
+
+    .spotify-player iframe {
+      display: block;
+      border: 0;
+      border-radius: 12px;
     }
   </style>
 </head>
@@ -122,5 +132,16 @@
 
     <h1><a href="/shop.html">VN SHOP®</a></h1>
   </main>
+
+  <div class="spotify-player">
+    <iframe
+      src="https://open.spotify.com/embed/track/01BcwD4bb8lQXbjTpHE76x?autoplay=1&theme=0"
+      width="100%"
+      height="80"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="eager"
+      title="VN SHOP soundtrack">
+    </iframe>
+  </div>
 </body>
 </html>
