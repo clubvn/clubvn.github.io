@@ -9,8 +9,15 @@
 
   <title>VN SHOP®</title>
 
-  <link rel="icon" type="image/png" href="/assets/logo/vn-logo-black-transparent.png">
-  <link rel="apple-touch-icon" href="/assets/logo/vn-logo-black-transparent.png">
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/logo/vn-logo-black-transparent.png"
+  >
+  <link
+    rel="apple-touch-icon"
+    href="/assets/logo/vn-logo-black-transparent.png"
+  >
 
   <style>
     * {
@@ -123,18 +130,29 @@
     </h1>
   </main>
 
-  <!-- Invisible background music -->
+  <!-- Invisible background music: no Spotify embed -->
   <audio id="siteMusic" autoplay loop preload="auto">
-    <source src="/assets/audio/vn-shop.mp3" type="audio/mpeg">
+    <source
+      src="/assets/mp3/SpotiDownloader.com%20-%20I%20Won%27t%20Last%20A%20Day%20Without%20You%20-%20Paul%20Williams.mp3"
+      type="audio/mpeg"
+    >
   </audio>
 
   <script>
     const music = document.getElementById("siteMusic");
+
     music.volume = 0.35;
 
-    music.play().catch(() => {
-      // Some browsers block autoplay until the visitor interacts.
-    });
+    function startMusic() {
+      music.play().catch(() => {
+        // The browser may require user interaction before playing audio.
+      });
+    }
+
+    startMusic();
+
+    document.addEventListener("click", startMusic, { once: true });
+    document.addEventListener("touchstart", startMusic, { once: true });
   </script>
 </body>
 </html>
