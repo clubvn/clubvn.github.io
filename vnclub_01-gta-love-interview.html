@@ -1,1 +1,683 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111B2B">
+  <meta name="description" content="GTA LOVE — An exclusive interview with Ojee Ka$h for CLUB VN.">
+
+  <title>GTA LOVE — Ojee Ka$h | CLUB VN</title>
+
+  <link rel="icon" type="image/png" href="/assets/logo/vn-favicon.png">
+  <link rel="apple-touch-icon" href="/assets/logo/vn-favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #111B2B;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* BACKGROUND */
+
+    .background-layer {
+      position: fixed;
+      z-index: -2;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .watermark {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .watermark img {
+      width: min(150vw, 1800px);
+      max-width: none;
+      height: auto;
+      opacity: 0.09;
+      user-select: none;
+    }
+
+    .tiles {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      gap: 10px;
+      padding: 20px;
+    }
+
+    .tile {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.018);
+    }
+
+    /* HEADER */
+
+    header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      padding: 30px 24px;
+    }
+
+    .logo {
+      display: block;
+      width: clamp(110px, 17vw, 190px);
+      height: auto;
+      filter: brightness(0) invert(1);
+      object-fit: contain;
+    }
+
+    /* EDITORIAL LAYOUT */
+
+    main {
+      position: relative;
+      width: 100%;
+      padding: 12px 20px 40px;
+    }
+
+    .editorial {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* COVER */
+
+    .cover {
+      position: relative;
+      width: 100%;
+      margin: 0 auto 55px;
+      overflow: hidden;
+      background: #0b1422;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.38);
+    }
+
+    .cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* QUESTION AND ANSWER */
+
+    .qa-section {
+      position: relative;
+      margin: 0 auto 44px;
+      padding: clamp(26px, 5vw, 55px);
+      background: rgba(8, 17, 30, 0.57);
+      border: 1px solid rgba(255,255,255,0.055);
+      box-shadow: 0 15px 45px rgba(0,0,0,0.19);
+      border-radius: 3px;
+    }
+
+    .question-number {
+      display: block;
+      margin-bottom: 17px;
+      color: rgba(255,255,255,0.48);
+      font-family: "DM Sans", Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .question {
+      margin: 0 0 28px;
+      max-width: 850px;
+      color: #fff;
+      font-family: "DM Sans", Arial, sans-serif;
+      font-size: clamp(20px, 3vw, 29px);
+      line-height: 1.38;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+    }
+
+    .answer {
+      max-width: 820px;
+      color: rgba(255,255,255,0.85);
+      font-family: "DM Sans", Arial, sans-serif;
+      font-size: clamp(15px, 1.7vw, 17px);
+      line-height: 1.95;
+      font-weight: 400;
+      letter-spacing: 0.005em;
+    }
+
+    .answer p {
+      margin: 0 0 23px;
+    }
+
+    .answer p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* EXCLUSIVE CONTENT */
+
+    .exclusive {
+      margin-top: 35px;
+      padding: clamp(22px, 4vw, 35px);
+      background: rgba(3, 10, 22, 0.88);
+      border: 1px solid rgba(112, 104, 255, 0.65);
+      border-radius: 3px;
+      box-shadow:
+        0 0 8px rgba(112, 104, 255, 0.12),
+        0 0 22px rgba(60, 105, 255, 0.09),
+        inset 0 0 20px rgba(76, 83, 180, 0.055);
+    }
+
+    .exclusive .answer {
+      color: rgba(255,255,255,0.91);
+    }
+
+    /* BANNERS */
+
+    .banner {
+      position: relative;
+      width: 100%;
+      margin: 0 auto 55px;
+      overflow: hidden;
+      background: #091321;
+      box-shadow: 0 20px 55px rgba(0,0,0,0.32);
+    }
+
+    .banner img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .banner:hover img {
+      transform: scale(1.012);
+    }
+
+    /* REFERENCE */
+
+    .reference {
+      margin: 65px auto 35px;
+      padding: 35px clamp(25px, 5vw, 50px);
+      background: rgba(8, 17, 30, 0.62);
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .reference-label {
+      display: block;
+      margin-bottom: 20px;
+      color: rgba(255,255,255,0.48);
+      font-family: "DM Sans", Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .reference-title {
+      margin: 0;
+      font-family: "DM Sans", Arial, sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: 0.015em;
+    }
+
+    .reference-description {
+      margin: 10px 0 0;
+      color: rgba(255,255,255,0.55);
+      font-family: "DM Sans", Arial, sans-serif;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* FOOTER */
+
+    footer {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      padding: 55px 20px 35px;
+      text-align: center;
+    }
+
+    .copyright {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .footer-logo {
+      width: 120px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 600px) {
+      header {
+        padding-top: 28px;
+      }
+
+      main {
+        padding: 8px 12px 25px;
+      }
+
+      .watermark img {
+        width: 190vw;
+      }
+
+      .tiles {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 7px;
+        padding: 12px;
+      }
+
+      .cover {
+        margin-bottom: 30px;
+      }
+
+      .qa-section {
+        margin-bottom: 27px;
+        padding: 25px 21px;
+      }
+
+      .question {
+        margin-bottom: 21px;
+      }
+
+      .answer {
+        line-height: 1.85;
+      }
+
+      .answer p {
+        margin-bottom: 19px;
+      }
+
+      .banner {
+        margin-bottom: 30px;
+      }
+
+      .exclusive {
+        margin-top: 25px;
+        padding: 22px 18px;
+      }
+
+      .reference {
+        margin-top: 45px;
+        padding: 27px 22px;
+      }
+
+      footer {
+        padding-top: 45px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .banner img {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="background-layer" aria-hidden="true">
+    <div class="watermark">
+      <img src="/assets/logo/vn-logo-black-transparent.png" alt="">
+    </div>
+
+    <div class="tiles">
+      <div class="tile"></div><div class="tile"></div>
+      <div class="tile"></div><div class="tile"></div>
+      <div class="tile"></div><div class="tile"></div>
+
+      <div class="tile"></div><div class="tile"></div>
+      <div class="tile"></div><div class="tile"></div>
+      <div class="tile"></div><div class="tile"></div>
+
+      <div class="tile"></div><div class="tile"></div>
+      <div class="tile"></div><div class="tile"></div>
+      <div class="tile"></div><div class="tile"></div>
+
+      <div class="tile"></div><div class="tile"></div>
+      <div class="tile"></div><div class="tile"></div>
+      <div class="tile"></div><div class="tile"></div>
+
+      <div class="tile"></div><div class="tile"></div>
+      <div class="tile"></div><div class="tile"></div>
+      <div class="tile"></div><div class="tile"></div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+
+  <header>
+    <img
+      class="logo"
+      src="/assets/logo/vn-logo-black-transparent.png"
+      alt="VN"
+    >
+  </header>
+
+  <main>
+    <article class="editorial">
+
+      <!-- MAGAZINE COVER -->
+
+      <div class="cover">
+        <img
+          src="/assets/banners/event-ojee-kash-gta-love-qa-2314-poster.png"
+          alt="GTA LOVE — Ojee Ka$h interview cover"
+          fetchpriority="high"
+        >
+      </div>
+
+      <!-- Q1 -->
+
+      <section class="qa-section">
+        <span class="question-number">QUESTION 01</span>
+
+        <h2 class="question">
+          What does the title "GTA LOVE" mean to you, and what story or feeling were you trying to capture with the song?
+        </h2>
+
+        <div class="answer">
+          <p>
+            Just after GTA LOVE release, I had the chance to explore more into GTA lore. I liked some of those community edits; they were a fit with the track's visual aesthetic.
+          </p>
+
+          <p>
+            As for GTA LOVE, I saw some girls fall into GTA way too much, and it got me thinking, you know what I’m saying? I mean, does this sense of love even exist? I think that’s got me questioning it in the first place, it could've been love. After all, GTA or LOVE, these aren't different cuts. Very much like any other assumptions, this is also of this culture. See, metaphorically GTA LOVE, a story about a thug outliving his doubts in a relationship told so. A sour-ish heart, gone all by yourself... To some this is "unfamiliar", while others got their safe spot. There has to be a contrast for something you feel "safe enough".
+          </p>
+
+          <p>
+            And the ironic part is, I could already see it coming. I was just there, wondering, “Where was my mind at?” It's okay to feeling bit confused likewise you can only arrive at by experience through.
+          </p>
+        </div>
+      </section>
+
+      <!-- BANNER 1 -->
+
+      <figure class="banner">
+        <img
+          src="/assets/banners/gta-love-hd-banner-2193.png"
+          alt="GTA LOVE visual"
+          loading="lazy"
+        >
+      </figure>
+
+      <!-- Q2 -->
+
+      <section class="qa-section">
+        <span class="question-number">QUESTION 02</span>
+
+        <h2 class="question">
+          Walk us through how the "GTA LOVE" video came together: whose concept was it, where did you shoot, and what moment from the set stays with you?
+        </h2>
+
+        <div class="answer">
+          <p>
+            Hahaha, yeah. To be honest, I should've kept it in mind while the song was on to go but it took a lot more hours than it seems. At this point, gotta give all the flowers to 9ojeez9. Arranging things frame by frame, constructing scenes from scratch; it’s just ahead of its time… We're living in 9ojeez9’s world already, shoutout, man. It's still unbelievable how it all works out. Who knows what got next? I just love to see that 9 pushes into the Ankara scene. We've already released “HVI” and “BIEARTH” together, and there are dozens of other collaborations waiting in the vault. Maybe we get into that on another one.
+          </p>
+
+          <p>
+            I was actually in mad love with shooting something, especially in my neighborhood. Unfortunately we had through a pretty busy schedule at the time so the idea of making it real always remained general, so we never actually started. Even so I’ve imagined GTA LOVE music video being quite vivid, on its own Vice City inspired purple-blue club like neon gradients, this also used in at official materials. A lot of these related to this overall atmosphere so far. That's what makes a archive worthwhile to me. Even without a music video, it has done built a pretty rich visual catalog through visuals, edits, archives and collages.
+          </p>
+
+          <p>
+            If GTA LOVE had a music video, it’ll be the Launch Night for sure—that day was a GTA LOVE music video. I was in Istanbul on that time, working for the GTA LOVE's Premiere Night at FLINTA. We did catch a vibe right there. The night was just right. Their team also involved in the process throughout the event too. Everyone was interested and enthusiastic about it. We were just having a good time, while making sure all the preparations going all right beforehand. It had felt premium in many ways. It wasn't a crowd-based experience but hey, it was definitely something peaceful and joy for real. It got moody, disco-driven and surprisingly low-pressure time to time. Played some of unreleased too though. For people who’s missed, I'd definitely like to see y'all in another one someday. Looking back, There gon’ be only one GTA LOVE Premiere. Still, anyone with access to the song can experience it again. There are no rules on that one; whatever makes you comfortable. Maybe just the right chemistry between us led to use one of the iconic symbols there, the Galata Tower as GTA LOVE's visual aesthetic. I mean, who would have guess that one? Bottom line, I’m grateful what we had in there. I wanna thank to the both FLINTA ISTANBUL and VN Studios for all the valuable contributions.
+          </p>
+        </div>
+
+        <!-- EXCLUSIVE CONTENT -->
+
+        <div class="exclusive">
+          <div class="answer">
+            <p>
+              I had a really great moment there, I remember when I get a chance to look out over the beautiful view around and it was fireworks all over in the sky. That was a surprise. Not everyone gets to be that lucky, so gotta be grateful for everything.
+            </p>
+
+            <p>
+              Funny moment I had was bringing my own champagne glass to the venue. See, I was out of town, and I got my fit was somewhere else so I was carrying a backup bag everywhere just in case. After I got changed, I went straight to the venue. Party got lit up and when the champagnes was being served, they said that there were no extra glasses left because all had been served. I got literally out of glass on my own appearance. Luckily, I happened to have a champagne glass in my bag, so I used that one. It all came out of the dome.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- BANNER 2 -->
+
+      <figure class="banner">
+        <img
+          src="/assets/banners/past-event-ojee-kash-gta-love-launch.png"
+          alt="GTA LOVE Premiere Night"
+          loading="lazy"
+        >
+      </figure>
+
+      <!-- Q3 -->
+
+      <section class="qa-section">
+        <span class="question-number">QUESTION 03</span>
+
+        <h2 class="question">
+          How was the track itself built in the studio, from the first idea to the finished version, and who did you work with to shape its sound?
+        </h2>
+
+        <div class="answer">
+          <p>
+            I mean, I might seem chill, but I was messed up, you know. We locked in the zone, on that non-sleep marathon. That day, I recorded six more while we working on the GTA LOVE production. I'm sure that everyone got wasted as hell. I can't tell about each one yet, but each one has its own story. Everything, really. Completion varies.
+          </p>
+
+          <p>
+            Whenever we got something, we coming up with all the ideas we got, you know, bringing all those vibes to the table. It may feel like you've got left so much behind, regardless of how much you got. In fact, when I heard it as a whole, I was like, “Damn, did I really say all that?”
+          </p>
+        </div>
+      </section>
+
+      <!-- BANNER 3 -->
+
+      <figure class="banner">
+        <img
+          src="/assets/banners/gta-love-ojee-kash-banner-hd-7743.png"
+          alt="Ojee Ka$h — GTA LOVE"
+          loading="lazy"
+        >
+      </figure>
+
+      <!-- Q4 -->
+
+      <section class="qa-section">
+        <span class="question-number">QUESTION 04</span>
+
+        <h2 class="question">
+          Where did you grow up, and how do that place and the people around you come through in your music?
+        </h2>
+
+        <div class="answer">
+          <p>
+            I grew up in Ankara, between Çankaya and Mamak, back and forth. I've basically been in the same place since day one. My family took all the credit for me; I don't have to worry about that so much. My whole childhood played out across different streets in my city, just hanging around. I'd say I couldn't have done more for my city. I done love every corner of it, as I didn't get to live in all of them but I’d love to show as each someday.
+          </p>
+
+          <p>
+            Being part of an extra-oriented scene has definitely effected the way I see things. It’s about giving something for the city, and taking something from it back. A Lot of my creations comes from the environment I grew up in and the people I crossed paths. All might have influenced my point of view: being close to this atmosphere and the untold stories about it. Man, I love bringing it up. Damn, it's so peak for me. Always down for south... That’s where my soul belongs.
+          </p>
+        </div>
+
+        <!-- EXCLUSIVE CONTENT -->
+
+        <div class="exclusive">
+          <div class="answer">
+            <p>
+              There's a lot going on about Ankara, It's layered, raw textured, and just whole lotta fabric. You may never know what might come out. Also hard to not mention, it’s only visible when you’ve actually inside, you could call it Wakanda. The city known for its people whose approach unique. This are go far beyond the music. There are also many examples of Ankara's influence, but that's not the subject of this interview. Maybe another time. One thing for sure: Ankara has it’s own thing. We call it “06”, I don't expect y’all to understand every part of it, either. If y’all ain’t so, maybe that's how it was supposed to be. I be definitely a good tour guide for Ankara, though. I could talk about it forever and never get tired. The point is, you couldn’t have defined Ojee Ka$h without Ankara.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- BANNER 4 -->
+
+      <figure class="banner">
+        <img
+          src="/assets/banners/ankara-southside-hd-banner-2918.png"
+          alt="Ankara Southside"
+          loading="lazy"
+        >
+      </figure>
+
+      <!-- Q5 -->
+
+      <section class="qa-section">
+        <span class="question-number">QUESTION 05</span>
+
+        <h2 class="question">
+          How did the name Ojee Ka$h come about, and what does it say about who you are as an artist?
+        </h2>
+
+        <div class="answer">
+          <p>
+            It’s funny because, see, at first, neither “Ojee” nor “Ka$h” had to do with my artistic purpose. To get into it real quick: shoutout to my high school friends, how everybody used to call me “Ojee.”—And I was him, you know? Although I've been hearing that name since I was born. It literally came out of nowhere. Maybe it was just an easy to pronounce, or they were clowning on me. I don't know. Either way, that’s me right there. Ojee didn't turn into as an artist name when I became an artist. Ojee was already a name with me as long as I can remember.
+          </p>
+
+          <p>
+            On the other hand, “Ka$h” comes whole different situation. Back then, it was connected to my business, getting strict cash, catching up with those loads, you know just being a middle cash boy. When I was get down with my cousins. They used to call me and all that, somehow it fit. There were different reasons behind it, partly with that whole wishing for abundance. Even so, I've got nothing to complain about; I mean, isn't that what we're doing right now?
+          </p>
+        </div>
+
+        <!-- EXCLUSIVE CONTENT -->
+
+        <div class="exclusive">
+          <div class="answer">
+            <p>
+              All the jokes aside,
+            </p>
+
+            <p>
+              When you use a name which already you, there's gon’ be conclusion and some confusion along the way. When I'm on stage, I'm Ojee. When I’m at my personal, I'm still Ojee. It's directly connected to my personal life, directly connected to me. You have to deal with those things effectively. Because at the end of the day, you have to know how to introduce yourself properly first. I’d describe myself as a “Visionary Designer,” “Fashion Savant” rather than just a vocalist. I've involved in different stages, and it’s all more of a piece of tailored work to me. I think this names itself sits underneath all of these things and contains all of them for now.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q6 -->
+
+      <section class="qa-section">
+        <span class="question-number">QUESTION 06</span>
+
+        <h2 class="question">
+          What first pulled you into making music, and what keeps you going on the days when it feels hardest?
+        </h2>
+
+        <div class="answer">
+          <p>
+            Let me put it straight: I was taught that music comes naturally. I’ve raised been told “if you don't have it as your birth right, then it's not your thing.” So if I wasn't believed that I’m naturally talented, I wouldn't had myself at this like that in first place. It's that no one else could really say what music has overly become in my life, as some other kid growing up in Southside; I used to see myself as one with music. It was there at my lowest point, when I was going through a lot. The first time I made something you might call it ‘music’ was back in 2018–2019. Before that, I was expressing myself through the way I talk or how I carry on. That’s my biggest inspiration right here, the one or two things I value most in my life: to inspire or encourage them keep going. That’s my biggest win-win right here and that’s when I started to create things and I couldn't have done all this without relying on the things really making me up; otherwise, I wouldn't still be counting right now, but it is what it is.
+          </p>
+        </div>
+
+        <!-- EXCLUSIVE CONTENT -->
+
+        <div class="exclusive">
+          <div class="answer">
+            <p>
+              All I’m saying is: Look, this could be anyone who’s been through hard times. People might tell you about being too 'dramatic' or make fun of it when there was literally nothing funny. That doesn’t make you insignificant or make you special. You do. You really need to know how to look forward. And remember, if there's no one else around, that's when you'll feel the light. And if you ever feel that light, that's when you walk to it. Never be scared to walk alone.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q7 -->
+
+      <section class="qa-section">
+        <span class="question-number">QUESTION 07</span>
+
+        <h2 class="question">
+          What are you working on next, and how do you want it to build on what listeners heard in “GTA LOVE”?
+        </h2>
+
+        <div class="answer">
+          <p>
+            I think this the real slick part right there. We got comebacks, comedowns, countdowns, and we literally forget to notify y'all about what's next. Let's take things further. We are preparing something turnt-up for those who need total isolation and still wanna keep that inspiration. The discovery is still on go, and who knows when? Some things may come from an outdated catalog, an old video game texture, and others may come from an OG archive, a digital visual, or a soundscape, maybe a piece of clothing, or a sound somebody made in their bedroom. Somehow, it becomes a part of something. I know I owe some y'all an explanation. I wish I could speak more about it, but I don’t wanna ruin all the surprise, you know what I’m saying? Let’s not rush into that yet. I still wanna keep on experimenting and I'm excited to hear what we got in the end.
+          </p>
+
+          <p>
+            That is pretty much it. I really appreciate Exposed Vocals making room for this interview. I've been through so many sleepless nights for this, too. We live in a world where we must remain silent and moments like this definitely mean something. Also, I wanna thank all of y'all who have read with care or shared or might've done both... All y'all such a gem. Don't forget to let the world feel you, based on your taste. Go with your passion, make love with it, take your time, spend it with care, feel safe, tell 'em they ain't sh* t, whenever you decide to start on, walk with your flow again, listen to your blessing, glow the light whatsoever within you.
+          </p>
+        </div>
+      </section>
+
+      <!-- BANNER 5 -->
+
+      <figure class="banner">
+        <img
+          src="/assets/banners/gta-love-poster-3123.png"
+          alt="GTA LOVE — Ojee Ka$h"
+          loading="lazy"
+        >
+      </figure>
+
+      <!-- REFERENCE -->
+
+      <section class="reference">
+        <span class="reference-label">REFERENCE</span>
+
+        <h2 class="reference-title">
+          GTA LOVE — Ojee Ka$h
+        </h2>
+
+        <p class="reference-description">
+          Interview originally prepared for Exposed Vocals.
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="copyright">
+      © 2026 VN RECORDS. ALL RIGHTS RESERVED.
+    </div>
+
+    <img
+      class="footer-logo"
+      src="/assets/logo/vn-logo-black-transparent.png"
+      alt="VN"
+    >
+  </footer>
+
+</body>
+</html>
